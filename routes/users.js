@@ -17,7 +17,7 @@ var router = express.Router();
 
 const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda");
 try {
-  var LambdaClientInst = new LambdaClient({ region: 'us-east-1' });
+  var LambdaClientInst = new LambdaClient({ region: 'us-west-2' });
 } catch (e) {
   console.log(e);
 }
@@ -96,7 +96,7 @@ router.post('/', function postUser(req, res, next) {
               });
             } else {
               let params = {
-                FunctionName: 'NYTStoriesMgmt', /* required */
+                FunctionName: 'NYTStoriesRefresh', /* required */
                 InvocationType: "Event", // "Event" means to invoke asyncronously. Use "RequestResponse" for syncronous calls
                 LogType: "Tail",
                 Payload: JSON.stringify({ params_call_type: "refreshForUserFilter_call", doc: xferUser })
@@ -265,7 +265,7 @@ router.put('/:id', authHelper.checkAuth, function (req, res, next) {
             });
           } else {
             let params = {
-              FunctionName: 'NYTStoriesMgmt', /* required */
+              FunctionName: 'NYTStoriesRefresh', /* required */
               InvocationType: "Event", // "Event" means to invoke asyncronously. Use "RequestResponse" for syncronous calls
               LogType: "Tail",
               Payload: JSON.stringify({ params_call_type: "refreshForUserFilter_call", doc: result.value })

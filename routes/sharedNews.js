@@ -1,5 +1,5 @@
 //
-// sharedNews.js: A Node.js Module for for shared news story management.
+// sharedNews.js: A Node.js Module for shared news story management.
 //
 // Each shared story is kept in its own Document.
 //

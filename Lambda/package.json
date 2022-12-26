@@ -5,8 +5,8 @@
   "description": "Lambda to interface with NYT API",
   "main": "NYTStoriesRefresh.js",
   "author": {
-    "name": "BUSHMAN",
-    "email": "jsdevstack@outlook.com"
+    "name": "DEVPRINCIPIA",
+    "email": "dev.principia@gmail.com"
   },
   "scripts": {
     "zipLambda": "zip -r lambda.zip NYTStoriesRefresh.js package.json node_modules"

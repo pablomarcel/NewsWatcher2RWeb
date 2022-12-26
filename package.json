@@ -5,8 +5,8 @@
   "description": "NewsWatcher",
   "main": "server.js",
   "author": {
-    "name": "Blue Sky Productions",
-    "email": "jsdevstack@outlook.com"
+    "name": "Dev Principia",
+    "email": "dev.principia@gmail.com"
   },
   "scripts": {
     "start": "node server.js",
