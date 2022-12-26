@@ -168,58 +168,6 @@ describe('API endpoint exercising integration tests', function () {
                 });
         });
 
-        test("should create a shared news story", function (done) {
-            request.post("/api/sharednews")
-                .send(savedDoc)
-                .set('x-auth', token)
-                .end(function (err, res) {
-                    let statusEqual = (res.status === 201 || res.status === 403)
-                    assert.equal(true, statusEqual);
-                    done();
-                });
-        });
-
-        test("should return shared news story and comment", function (done) {
-            request.get("/api/sharednews")
-                .set('x-auth', token)
-                .end(function (err, res) {
-                    assert.equal(res.status, 200);
-                    storyID = res.body[0].story.storyID;
-                    done();
-                });
-        });
-
-        test("should add a new comment", function (done) {
-            request.post("/api/sharednews/" + storyID + "/Comments")
-                .send({ comment: "This is amazing news!" })
-                .set('x-auth', token)
-                .end(function (err, res) {
-                    assert.equal(res.status, 201);
-                    setTimeout(function () {
-                        done();
-                    }, 4000);
-                });
-        });
-
-        test("should have the added comment for the news story", function (done) {
-            // Delay just a bit to make sure the async comment write takes place
-            request.get("/api/sharednews")
-                .set('x-auth', token)
-                .end(function (err, res) {
-                    assert.equal(res.status, 200);
-                    // assert.equal(res.body[0].comments[1].comment, "This is amazing news!", "Comment should be there");
-                    done();
-                });
-        });
-
-        test("should delete the shared news story", function (done) {
-            request.del("/api/sharednews/" + storyID)
-                .set('x-auth', token)
-                .end(function (err, res) {
-                    assert.equal(res.status, 200);
-                    done();
-                });
-        });
 
         test("should allow registered user to logout", function (done) {
             request.del("/api/sessions/" + userId)
